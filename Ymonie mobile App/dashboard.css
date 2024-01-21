@@ -1,0 +1,78 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+}
+
+.sidebar {
+    width: 15%;
+    height: 100vh;
+    background-color: #333;
+    position:absolute;
+}
+
+nav {
+    padding: 10px;
+    background: green;
+    border: 2px solid;
+    border-radius: 0 15px 15px 0;
+}
+
+nav ul li {
+    display: block;
+    padding-bottom: 60px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: aliceblue;
+}
+
+.wrapper {
+    width: 80%;
+    height: 100vh;
+    margin-left: 15%;
+    box-sizing: border-box;
+    display: grid;
+    position: relative;
+    grid-template-columns: repeat(3, 1fr); /* Three columns with equal width */
+    gap: 10px;
+}
+.displayName,
+.displayShear,
+.displaySaving,
+.displayTotalbalance,
+.display {
+    color: green;
+    padding: 20px;
+    text-align: center;
+    border: 2px solid green;
+    border-radius: 10px;
+    margin-left: 10px;
+    font-size: 2em;
+    justify-content: center;
+    box-shadow: 2px 2px 1px 0px rgb(109, 108, 108);
+}
+
+.displayName {
+    background-color: rgba(221, 226, 223);
+    color:green;
+    padding-left: 10px;
+    margin: 10px;
+    text-align: center;
+
+}
+@media (max-width: 600px) {
+    .sidebar {
+        display: block; /* Hide the sidebar on small screens */
+       
+    }
+
+    .wrapper {
+        grid-template-columns: 1fr; /* Change to a single column for small screens */
+    }
+}

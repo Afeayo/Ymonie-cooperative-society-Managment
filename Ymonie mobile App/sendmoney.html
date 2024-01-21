@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>sendmoney</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        *{
+            padding: 0px;
+            margin: 0px;
+            box-sizing: border-box;
+        }
+        .send {
+            
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+         
+         
+        }
+
+        .box, .crditwalet {
+            text-align: center;
+            border: 1px solid #ccc;
+            padding: 10px;
+            border-radius: 10px;
+            width: 40%;
+            cursor: pointer;
+            background-color:green ;
+            color: aliceblue;
+        }
+        
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        ul li {
+            padding: 5px;
+        }
+
+        select, input {
+            width: 100%;
+            padding: 5px;
+            margin-top: 5px;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="send">
+        <div class="box" id="send">
+            <i class="fas fa-arrow-up"></i> <h3> Send</h3>
+            <ul class="hidden">
+                <li>sendmoney
+                    <ul>
+                        <li><input type="text" placeholder="Enter amount"></li>
+                        <li>
+                            <select name="" id="">
+                                <option value="">Choose bank</option>
+                                <option value="044">Access Bank</option>
+                                <option value="023">Citi Bank</option>
+                                <!-- Add other bank options here -->
+                            </select>
+                        </li>
+                        <button type="submit">Send Money</button>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <div class="crditwalet" id="crditwalet">
+            <i class="fas fa-arrow-down"></i><h3>Credit Savings</h3>
+            <ul class="hidden">
+                <li>credit savings
+                    <ul>
+                        <li><input type="text" placeholder="Enter amount"></li>
+                        <li><input type="text" placeholder="Card Number"></li>
+                        <li><input type="text" placeholder="Expiry Date"></li>
+                        <li><input type="text" placeholder="CVV"></li>
+                        <!-- Add other debit card details here -->
+                        <li><button onclick="debitCard()">credit saving</button></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        var sendDropdown = document.getElementById("send").getElementsByTagName("ul")[0];
+        var crditwaletDropdown = document.getElementById("crditwalet").getElementsByTagName("ul")[0];
+    
+        document.getElementById("send").addEventListener("click", function (event) {
+            toggleDropdown(sendDropdown);
+            event.stopPropagation();
+        });
+    
+        document.getElementById("crditwalet").addEventListener("click", function (event) {
+            toggleDropdown(crditwaletDropdown);
+            event.stopPropagation();
+        });
+    
+        document.addEventListener("click", function () {
+            closeDropdowns();
+        });
+    
+        function toggleDropdown(dropdown) {
+            if (dropdown.classList.contains("hidden")) {
+                closeDropdowns(dropdown);
+                dropdown.classList.remove("hidden");
+            } else {
+                dropdown.classList.add("hidden");
+            }
+        }
+    
+        function closeDropdowns(excludeDropdown) {
+            var dropdowns = document.getElementsByClassName("hidden");
+            for (var i = 0; i < dropdowns.length; i++) {
+                if (dropdowns[i] !== excludeDropdown) {
+                    dropdowns[i].classList.add("hidden");
+                }
+            }
+        }
+    
+        function debitCard() {
+            var cardNumber = document.querySelector("#crditwalet input[placeholder='Card Number']").value;
+            var expiryDate = document.querySelector("#crditwalet input[placeholder='Expiry Date']").value;
+            var cvv = document.querySelector("#crditwalet input[placeholder='CVV']").value;
+    
+            // Do something with the debit card details, e.g., send to server
+            console.log("Card Number:", cardNumber);
+            console.log("Expiry Date:", expiryDate);
+            console.log("CVV:", cvv);
+    
+            // Clear the input fields
+            document.querySelector("#crditwalet input[placeholder='Card Number']").value = "";
+            document.querySelector("#crditwalet input[placeholder='Expiry Date']").value = "";
+            document.querySelector("#crditwalet input[placeholder='CVV']").value = "";
+        }
+    </script>
+    
+</body>
+</html>

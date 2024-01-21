@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buyshear</title>
+</head>
+<style>
+* {
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 20px;
+    padding: 10px;
+    background-color: rgb(167, 206, 167);
+    color: green;
+}
+
+form {
+    width: 85%;
+    max-width: 400px; /* Added max-width for responsiveness */
+    height: 85vh;
+    background-color: white;
+    border: 1px solid;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    margin: 15px;
+    border-radius: 20px;
+    box-shadow: 0px 2px 10px 2px;
+}
+
+form label {
+    padding: 5px;
+    margin: 10px;
+    display: block;
+    text-align: center;
+}
+
+form input {
+    padding: 5px;
+    margin: 0 auto; /* Center the input */
+    display: block;
+    text-align: center;
+    border: 1px solid green;
+    border-radius: 6px;
+}
+
+form input:hover {
+    background-color: green;
+}
+
+::placeholder {
+    color: rgb(15, 219, 15);
+}
+
+::placeholder:hover {
+    color: white;
+}
+
+form p {
+    text-align: center;
+    padding: 5px;
+    color: green;
+}
+
+form a {
+    text-decoration: none;
+}
+
+form button {
+    padding: 5px;
+    margin: 0 auto; /* Center the button */
+    display: block;
+    text-align: center;
+    width: 50%;
+    background-color: green;
+    border: 1px solid green;
+    border-radius: 10px;
+    color: white;
+}
+
+form button:hover {
+    background-color: white;
+    color: green;
+}
+
+form h3 {
+    padding: 5px;
+    text-align: center;
+}
+
+form h4 {
+    padding: 2px;
+    text-align: center;
+}
+
+</style>
+<body>
+    <div class="container">
+        <form action="" id="buyShearForm">
+            <h3>Welcome to YMONIE Shear Market</h3>
+            <h4>We Sell Shear At ₦1000 Per Shear</h4>
+            <p>Kindly fill in the required information to buy your shear</p>
+
+            <div>
+                <label for="Name">Name:</label>
+                <input type="text" id="name" placeholder="Enter Your Full Name" required>
+                <label for="email">Email:</label>
+                <input type="email" id="email" placeholder="Email" required>
+            </div>
+            <div class="shearamout">
+                <label for="shear">Number of shears:</label>
+                <input type="number" id="shearprice" required placeholder="Enter number of shear">
+            </div>
+            <div>
+                <label for="card">Card Information:</label>
+                <input type="text" id="card" placeholder="Card number" aria-placeholder="ccv" required>
+            </div>
+            <p>By clicking Buy shear you agreed to the <strong><a href="#">Terms and Condition</a></strong></p>
+            <button type="button" id="buyshear" onclick="buyShear()">Buy Shear</button>
+        </form>
+    </div>
+
+    <script>
+        const users = [
+        {
+      username: "user1",
+      Name:"user Example 1",
+      email: "user1@example.com",
+      password: "password1",
+      shear: 10000,
+      savings: 2000000,
+      totalBalance: 100000000,
+    },
+    {
+      username: "user2",
+      Name:"user Example 2",
+      email: "user2@example.com",
+      password: "password2",
+      shear: 15000,
+      savings: 2500000,
+      totalBalance: 120000000,
+    },
+    {
+      username: "AfeAyoSunday",
+      Name:"Afe Ayo Sunday",
+      email: "afeayosunday@gmail.com",
+      password: "password3",
+      shear: 10000000,
+      savings: 2500000,
+      totalBalance: 120000000,
+    },
+            // Your existing user data here
+        ];
+
+        function buyShear() {
+            const shearInput = document.getElementById("shearprice");
+            const nameInput = document.getElementById("name");
+
+            const shearQuantity = parseInt(shearInput.value);
+            const totalPrice = shearQuantity * 1000;
+
+            // Find the user by name
+            const user = users.find(u => u.Name === nameInput.value);
+
+            if (user) {
+                // User found, update user dashboard
+                updateDashboard(user, totalPrice);
+            } else {
+                // User not found, create a new user and send an email
+                const emailInput = document.getElementById("email");
+                const cardInput = document.getElementById("card");
+
+                const newUser = {
+                    username: generateUsername(nameInput.value),
+                    Name: nameInput.value, // Add the Name field
+                    email: emailInput.value,
+                    password: generateRandomPassword(),
+                    shear: totalPrice,
+                    // Add other properties as needed
+                };
+
+                users.push(newUser);
+
+                // Send an email to the new user
+                sendEmail(newUser);
+
+                // Update dashboard for the new user
+                updateDashboard(newUser, totalPrice);
+            }
+        }
+
+        function updateDashboard(user, totalPrice) {
+            // Your logic to update the user dashboard goes here
+            console.log(`Updating dashboard for ${user.Name} with total shear value: ${totalPrice}`);
+        }
+
+        function generateUsername(name) {
+            // Your logic to generate a username based on the name goes here
+            // For simplicity, let's assume the username is the first part of the email
+            const emailParts = name.split("@");
+            return emailParts[0];
+        }
+
+        function generateRandomPassword() {
+            // Your logic to generate a random password goes here
+            // For simplicity, let's generate a random 8-character alphanumeric password
+            const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+            let password = "";
+            for (let i = 0; i < 8; i++) {
+                const randomIndex = Math.floor(Math.random() * characters.length);
+                password += characters.charAt(randomIndex);
+            }
+            return password;
+        }
+
+        function sendEmail(user) {
+            // Your logic to send an email to the user goes here
+            console.log(`Sending email to ${user.email} with username: ${user.username} and password: ${user.password}`);
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <style>
+      * {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh; /* Set min-height to 100vh to occupy the full screen */
+    margin: 0; /* Remove default body margin */
+}
+
+.form1 {
+    min-height: 100vh; /* Set min-height to 100vh to occupy the full screen */
+    background: green;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.bg {
+    margin: 20px;
+    padding: 10px;
+    background: white;
+    box-shadow: 0px 0px 2px 1px green;
+    border-radius: 20px;
+    width: 80%; /* Adjusted for responsiveness */
+    max-width: 400px; /* Added max-width for responsiveness */
+}
+.bg h3 {
+    padding: 10px;
+    margin: 20px;
+    color: green;
+    text-align: center;
+    font-size: 24px;
+}
+.bg p {
+    margin: 5px;
+    color: green;
+    text-align: center;
+    font-size: 20px;
+}
+
+form {
+    margin: 20px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column; /* Adjusted for responsiveness */
+    align-items: center; /* Centered horizontally */
+}
+
+form label {
+    margin: 10px 0; /* Added margin for spacing */
+    color: green;
+    text-align: center;
+}
+
+form input {
+    margin: 5px 0; /* Added margin for spacing */
+    padding: 15px;
+    width: 80%; /* Adjusted for responsiveness */
+    max-width: 300px; /* Added max-width for responsiveness */
+    display: block;
+    border: 2px solid green;
+    border-radius: 6px;
+}
+
+form input:hover {
+    background-color: rgb(205, 252, 205);
+    color: aliceblue;
+  
+}
+form input::placeholder{
+  color: green;
+  
+}
+form button {
+    margin: 10px 0; /* Added margin for spacing */
+    padding: 10px;
+    color: white;
+    width: 80%; /* Adjusted for responsiveness */
+    max-width: 300px; /* Added max-width for responsiveness */
+    border-radius: 6px;
+    background-color: green;
+    border: solid green;
+}
+
+form button:hover {
+    background-color: aliceblue;
+    color: green;
+}
+
+form a {
+    text-decoration: none;
+    color: green;
+}
+
+@media (max-width: 600px) {
+    .bg {
+        width: 90%; /* Adjusted for responsiveness */
+    }
+}
+    </style>
+  </head>
+  <body>
+    <div class="form1" id="form">
+      <div class="bg">
+        <h3>Welcome to YMONIE</h3>
+        <p>Kindly login</p>
+        <form action="" method="post">
+          <label for="userName">User Name/Email</label>
+          <input
+            type="email"
+            id="usernameOrEmail"
+            placeholder="Enter User Name/Email"
+            required
+          />
+
+          <br />
+          <label for="password">User password</label>
+          <input
+            type="password"
+            id="password"
+            placeholder="Enter User password"
+          />
+          <br />
+          <button type="submit" id="submitbutton">Proceed</button>
+          <a href="">Forget Password</a>
+        </form>
+      </div>
+    </div>
+    <script defer src="login.js"></script>
+  </body>
+</html>

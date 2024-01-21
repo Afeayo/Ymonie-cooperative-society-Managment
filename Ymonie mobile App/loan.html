@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Loan</title>
+    <style>
+      * {
+        padding: 0px;
+        margin: 0px;
+        box-sizing: border-box;
+        background-color:green;
+      }
+
+      .container {
+        max-width: 100%;
+        max-height: 100vh;
+        padding: 10px;
+        margin: 15px;
+        border: 4px solid rgb(224, 224, 244);
+        border-radius: 20px;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .container p {
+        color: white;
+        font-size: 24px;
+        padding: 2px;
+        margin: 5px;
+        text-align: center;
+      }
+
+      .display {
+        color: green;
+        margin: 10px;
+        padding: 10px;
+        margin: 10px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .box1,
+      .box2,
+      .displa,
+      .gau1,
+      .gau2 {
+        width: 200px;
+        height: 50px;
+        padding: 10px;
+        margin: 5px;
+        border: 2px solid green;
+        border-radius: 10px;
+        background-color: rgb(165, 165, 167);
+        color: aliceblue;
+      }
+
+      .box {
+        
+        background-color: aliceblue;
+        border: 2px solid green;
+        border-radius: 20px;
+        padding: 5px;
+        margin: 5px;
+        display: block;
+        align-items: center;
+        justify-content: center;
+      }
+
+      form {
+        max-width: 100%;
+        margin: 5px;
+        display: block;
+        align-items: center;
+        justify-content: center;
+      }
+
+      form label {
+        margin: 10px;
+        font-size: 24px;
+        color: aliceblue;
+        text-align: center;
+        justify-content: center;
+        display: inline-block;
+      }
+
+      ::placeholder {
+        color: aliceblue;
+        width: 80%; /* Make the placeholder wider */
+        text-align: center; /* Center the text in the placeholder */
+        font-size: 20px;
+
+      }
+
+      form input {
+        width: 90%;
+        padding: 10px;
+        margin: 10px;
+        border: 2px solid rgb(242, 247, 242);
+        border-radius: 6px;
+        margin: 10px;
+        text-align: center;
+        align-items: center;
+        justify-content: space-between;
+        color: white;
+      }
+
+      form button {
+        width: 80%;
+        padding: 10px;
+        border: 2px solid rgb(237, 243, 237);
+        border-radius: 6px;
+        color: rgb(246, 253, 246);
+        cursor: pointer;
+        margin: 20px;
+        font-size: 20px;
+      }
+
+      /* Media Queries for Mobile Responsiveness */
+      @media screen and (max-width: 600px) {
+        .box1,
+        .box2,
+        .displa,
+        .gau1,
+        .gau2 {
+          width: 100%;
+        }
+
+        form {
+          max-width: 100%;
+          display: block;
+        }
+      }
+      .display button{
+        color:  white;
+        padding: 5px;
+        border: 2px solid white;
+        border-radius: 6px;
+        box-shadow: 0px 2px 3px 2px rgb(53, 51, 51);
+
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <p>Kindly provide the necessary information to access the loan</p>
+      <div class="display">
+        <div class="box1" id="loanamout"></div>
+        <div class="box2" id="payback"></div>
+        <div class="gau1" id="garantor1"></div>
+        <div class="gau2" id="garantor2"></div>
+        <button onclick="redirectToDashboard()">Claim Loan</button>
+      </div>
+      <div class="box">
+        <form id="loanForm">
+          <!-- ... (your existing form) ... -->
+          <label for="username">User name</label>
+          <input type="text" id="usernameInput" placeholder="Enter your Username">
+          <label for="loanAmount">Loan Amount</label>
+          <input
+            type="number"
+            id="loanAmount"
+            placeholder="Enter loan amount"
+            required
+          />
+          <label for="firstguarantor">1 Guarantor</label>
+          <input
+            type="text"
+            id="firstguarantor"
+            placeholder="Enter your first guarantor username"
+            required
+          />
+          <label for="secondguarantor">2 Guarantor</label>
+          <input
+            type="text"
+            id="secondguarantor"
+            placeholder="Enter your Second guarantor username"
+            required
+          />
+          <button type="button" id="loanrequest" onclick="requestLoan()">
+            Request for Loan
+          </button>        
+        </form>
+      </div>
+    </div>
+    <script defer src="loan.js"></script>
+  </body>
+</html>
